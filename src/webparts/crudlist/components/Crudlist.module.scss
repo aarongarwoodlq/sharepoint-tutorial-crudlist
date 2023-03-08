@@ -10,6 +10,30 @@
   }
 }
 
+.container{
+  max-width: 800px;
+  margin: 0% auto;
+  box-shadow: 0 2px 4px 0 rgba(33, 5, 146, 0.5), 0 25px 50px 0 rgba(238, 231, 231, 0.5)
+}
+.grid {
+  @include ms-Grid;
+}
+.gridRow{
+  @include ms-Grid-row;
+}
+.smallCol{
+  @include ms-Grid-col;
+  @include ms-lg2;
+  @include ms-sm6;
+  @include ms-md4;
+}  
+.largeCol{
+  @include ms-Grid-col;
+  @include ms-lg10;
+  @include ms-sm6;
+  @include ms-md8;
+}
+
 .welcome {
   text-align: center;
 }

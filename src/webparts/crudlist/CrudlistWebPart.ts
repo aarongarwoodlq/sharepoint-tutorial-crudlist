@@ -12,14 +12,21 @@ import * as strings from 'CrudlistWebPartStrings';
 import Crudlist from './components/Crudlist';
 import { ICrudlistProps } from './components/ICrudlistProps';
 
+import { getSP } from './components/pnpJSConfig';
+
 export interface ICrudlistWebPartProps {
   description: string;
 }
+
 
 export default class CrudlistWebPart extends BaseClientSideWebPart<ICrudlistWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+  private _listName: string = "SPFxCRUDOperations";
+  private _taxonomyRoot: string = "BasicOps";
+
+
 
   public render(): void {
     const element: React.ReactElement<ICrudlistProps> = React.createElement(
@@ -29,7 +36,11 @@ export default class CrudlistWebPart extends BaseClientSideWebPart<ICrudlistWebP
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        listName: this._listName,
+        taxonomyRoot: this._taxonomyRoot,
+        context: this.context,
+        SPContext: getSP(this.context),
       }
     );
 
